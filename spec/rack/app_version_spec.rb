@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-describe Rack::AppVersion do
+RSpec.describe Rack::AppVersion do
   let(:app) { ->(env) { [200, env, 'app'] } }
 
   let :middleware do
