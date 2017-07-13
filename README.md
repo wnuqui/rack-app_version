@@ -1,4 +1,4 @@
-# Rack::AppVersion Middleware
+# Rack::AppVersion Middleware [![Build Status](https://semaphoreci.com/api/v1/wnuqui/rack-app_version/branches/master/badge.svg)](https://semaphoreci.com/wnuqui/rack-app_version)
 
 `Rack::AppVersion` is a middleware that sets the version of an app (Rack compatible web applications) via response header.
 
