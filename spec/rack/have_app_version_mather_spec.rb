@@ -14,7 +14,7 @@ RSpec.describe 'have_app_version matcher' do
   end
 
   context "env has no 'X-App-Version' key" do
-    it "fails" do
+    it 'fails' do
       env = {}
       expect(env).to_not have_app_version
     end
