@@ -7,3 +7,4 @@ gem 'activesupport'
 gem 'byebug'
 gem 'pry'
 gem 'rubocop', require: false
+gem 'simplecov', require: false, group: :test
