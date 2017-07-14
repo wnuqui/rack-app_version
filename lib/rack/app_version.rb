@@ -5,8 +5,9 @@ module Rack
   class AppVersion
     HEADER_KEY = 'X-App-Version'.freeze
 
-    def initialize(app)
+    def initialize(app, app_version_path)
       @app = app
+      @app_version = IO.readlines(app_version_path)[0].chomp
     end
 
     def call(env)
@@ -14,11 +15,8 @@ module Rack
     end
 
     def _call(env)
-      @app.call(env).tap { |_s, headers, _b| headers[HEADER_KEY] = app_version }
-    end
-
-    def app_version
-      `git log -n 1 --pretty='%h'`.chomp
+      @app.call(env).tap \
+        { |_s, headers, _b| headers[HEADER_KEY] = @app_version }
     end
   end
 end
