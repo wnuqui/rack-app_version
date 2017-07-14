@@ -4,6 +4,11 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'activesupport'
-gem 'byebug'
-gem 'pry'
-gem 'rubocop', require: false
+
+group :test, :development do
+  gem 'byebug'
+  gem 'codeclimate-test-reporter', '~> 1.0.0'
+  gem 'pry'
+  gem 'rubocop', require: false
+  gem 'simplecov', require: false
+end
