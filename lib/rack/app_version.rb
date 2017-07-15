@@ -4,10 +4,11 @@ module Rack
   # AppVersion
   class AppVersion
     HEADER_KEY = 'X-App-Version'.freeze
+    APP_VERSION_PATH = '.app_version'.freeze
 
-    def initialize(app, app_version_path)
+    def initialize(app)
       @app = app
-      @app_version = IO.readlines(app_version_path)[0].chomp
+      @app_version = IO.readlines(APP_VERSION_PATH)[0].chomp
     end
 
     def call(env)

@@ -2,13 +2,13 @@ RSpec.describe Rack::AppVersion do
   let(:app) { ->(env) { [200, env, 'app'] } }
 
   let(:middleware) do
-    Rack::AppVersion.new app, 'APP_VERSION'
+    Rack::AppVersion.new app
   end
 
   before(:all) do
-    FileUtils.remove_entry('APP_VERSION', true)
+    FileUtils.remove_entry(Rack::AppVersion::APP_VERSION_PATH, true)
 
-    open('APP_VERSION', 'w') do |f|
+    open(Rack::AppVersion::APP_VERSION_PATH, 'w') do |f|
       f << "d8b368e.\n"
     end
   end
@@ -24,5 +24,7 @@ RSpec.describe Rack::AppVersion do
     middleware.call({})
   end
 
-  after(:all) { FileUtils.remove_entry('APP_VERSION', true) }
+  after(:all) do
+    FileUtils.remove_entry(Rack::AppVersion::APP_VERSION_PATH, true)
+  end
 end
