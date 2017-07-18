@@ -3,19 +3,15 @@
 
 `Rack::AppVersion` is a middleware that sets the version of an app (Rack compatible web applications) via response header.
 
-## Installation
+## Setup
 
-In your Gemfile:
+### 1. In your Gemfile
 
 ```ruby
 gem 'rack-app_version', git: 'git://github.com/wnuqui/rack-app_version.git', branch: 'master'
 ```
 
-## Configuration
-
-### Rails
-
-In `config/application.rb` of your Rails application, put the code below.
+### 2. In `config/application.rb` of your Rails application, put the code below.
 
 ```ruby
 module YourApp
@@ -23,14 +19,33 @@ module YourApp
 
     # ...
 
-    config.middleware.use Rack::AppVersion, 'APP_VERSION'
+    config.middleware.use Rack::AppVersion
 
   end
 end
 ```
 
-`APP_VERSION` is the file path where to read version of an application. This removes dependence to a particular tool.
-The only requirement is that the file is generated and it has content, which is the version of the application.
+### 3. In `Rakefile` of your Rails application, put the code below.
+
+```ruby
+module Rack
+  class AppVersion
+    def self.generate_version
+      # Implement logic of getting application version here.
+    end
+  end
+end
+
+require 'rack/app_version/rake/task'
+Rack::AppVersion.load_tasks
+```
+
+Doing `bundle exec rake -T | grep app_version` will give you the following which you can use:
+
+```bash
+rake app_version:generate               # generate app version and write it in .app_version file
+rake app_version:init                   # generate .app_version file that will contain application version
+```
 
 See The [Rails Guide to Rack](http://guides.rubyonrails.org/rails_on_rack.html) for more details on rack middlewares or watch the [railscast](http://railscasts.com/episodes/151-rack-middleware).
 
