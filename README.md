@@ -36,7 +36,7 @@ module Rack
   end
 end
 
-require 'rack/app_version/rake/task'
+require 'rack/app_version/rake_task'
 Rack::AppVersion.load_tasks
 ```
 
