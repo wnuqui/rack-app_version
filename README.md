@@ -47,7 +47,15 @@ rake app_version:generate               # generate app version and write it in .
 rake app_version:init                   # generate .app_version file that will contain application version
 ```
 
-See The [Rails Guide to Rack](http://guides.rubyonrails.org/rails_on_rack.html) for more details on rack middlewares or watch the [railscast](http://railscasts.com/episodes/151-rack-middleware).
+### 4. Use `have_app_version` matcher to ensure everything is setup (optional).
+
+This rspec matcher can be used by the application to ensure that everything is properly configured.
+
+```ruby
+it 'has app version in response headers' do
+  expect(env).to have_app_version
+end
+```
 
 ## Common Gotchas
 
@@ -62,3 +70,5 @@ In many cases, the Rack stack will be different running in production environmen
 ```bash
 RAILS_ENV=production bundle exec rake middleware
 ```
+
+See The [Rails Guide to Rack](http://guides.rubyonrails.org/rails_on_rack.html) for more details on rack middlewares or watch the [railscast](http://railscasts.com/episodes/151-rack-middleware).
