@@ -1,4 +1,4 @@
-require 'rack/app_version/rake/task'
+require 'rack/app_version/rake_task'
 
 module Rack
   class AppVersion

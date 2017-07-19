@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'activesupport'
-gem 'thor'
 
 group :test, :development do
   gem 'byebug'

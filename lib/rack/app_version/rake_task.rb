@@ -19,13 +19,14 @@ module Rack
           task :init do
             puts 'Creating file that will contain application version ...'
             puts '      create .app_version'
-            FileUtils.touch '.app_version'
+            FileUtils.touch APP_VERSION_PATH
           end
         end
       end
 
       def load_generate_task
         namespace :app_version do
+          desc 'generate app version and write it in .app_version file'
           task :generate do
             puts 'Generating app version ...'
             puts '      generate version '
