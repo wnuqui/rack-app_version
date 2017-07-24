@@ -8,7 +8,7 @@
 ### 1. In your Gemfile
 
 ```ruby
-gem 'rack-app_version', git: 'git://github.com/wnuqui/rack-app_version.git', branch: 'master'
+gem 'rack-app_version'
 ```
 
 ### 2. In `config/application.rb` of your Rails application, put the code below.
