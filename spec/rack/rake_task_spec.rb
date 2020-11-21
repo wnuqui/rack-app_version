@@ -38,13 +38,13 @@ RSpec.describe 'rake tasks' do
     it 'raises error on "rake app_version:init"' do
       expect {
         Rake::Task['app_version:init'].invoke
-      }.to raise_error(RuntimeError, "Don't know how to build task 'app_version:init' (see --tasks)")
+      }.to raise_error(RuntimeError)
     end
 
     it 'raises error on "rake app_version:generate"' do
       expect {
         Rake::Task['app_version:generate'].invoke
-      }.to raise_error(RuntimeError, "Don't know how to build task 'app_version:generate' (see --tasks)")
+      }.to raise_error(RuntimeError)
     end
   end
 end
